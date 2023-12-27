@@ -4,34 +4,38 @@
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
 
-body {
-  background-color: black;
+
+.container {
+  position: relative;
 }
 
 .border {
+  position: relative;
   margin: 3vh;
   padding: 2vh;
   border: 1px solid white;
   height: 93vh;
+  overflow: hidden;
 }
 
 .dark-border {
+  position: relative;
   margin: 3vh;
   padding: 2vh;
   border: 1px solid black;
   height: 93vh;
+  overflow: hidden;
 }
-
 
 .infos {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .info {
-  margin: 0 1rem;
+  margin: 1rem;
 }
 
 .info h6 {
