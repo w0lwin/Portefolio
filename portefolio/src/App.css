@@ -4,11 +4,23 @@
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
 
-
 body {
   background-color: black;
 }
 
+.border {
+  margin: 3vh;
+  padding: 2vh;
+  border: 1px solid white;
+  height: 93vh;
+}
+
+.dark-border {
+  margin: 3vh;
+  padding: 2vh;
+  border: 1px solid black;
+  height: 93vh;
+}
 
 
 .infos {
