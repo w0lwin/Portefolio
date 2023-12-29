@@ -4,6 +4,9 @@
 @import 'tailwindcss/components.css';
 @import 'tailwindcss/utilities.css';
 
+body {
+  overflow: hidden;
+}
 
 .container {
   position: relative;
