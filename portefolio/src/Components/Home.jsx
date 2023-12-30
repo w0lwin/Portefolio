@@ -7,10 +7,19 @@ const Home = ({ darkMode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    console.log('Début du délai de chargement');
+  
+    const timer = setTimeout(() => {
+      console.log('Fin du délai de chargement, mise à jour de isLoading');
       setIsLoading(false);
-    }, 5000);
+    }, 50);
+  
+    return () => {
+      clearTimeout(timer);
+      console.log('Nettoyage du délai de chargement');
+    };
   }, []);
+  
 
   if (isLoading) {
     return <Loading />;

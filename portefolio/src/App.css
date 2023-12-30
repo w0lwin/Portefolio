@@ -6,7 +6,7 @@
 
 body {
   overflow: hidden;
-  transition: background-color 1000ms;
+  transition: background-color 200ms;
 
 }
 
@@ -17,7 +17,7 @@ body {
 .border {
   position: relative;
   margin: 3vh;
-  border: 1px solid white;
+  border: 1px solid #f4f1f8;
   height: 93vh;
   overflow: hidden;
 }
@@ -25,7 +25,7 @@ body {
 .dark-border {
   position: relative;
   margin: 3vh;
-  border: 1px solid black;
+  border: 1px solid #0E0409;
   height: 93vh;
   overflow: hidden;
 }
@@ -103,11 +103,11 @@ body {
 
 
 body.dark-mode {
-  background-color: #000; /* ou la couleur que vous voulez pour le mode sombre */
-  color: #fff; /* pour le texte en mode sombre */
+  background-color: #0E0409; /* ou la couleur que vous voulez pour le mode sombre */
+  color: #f4f1f8; /* pour le texte en mode sombre */
 }
 
 body.light-mode {
-  background-color: #fff; /* ou la couleur que vous voulez pour le mode clair */
-  color: #000; /* pour le texte en mode clair */
+  background-color: #f4f1f8; /* ou la couleur que vous voulez pour le mode clair */
+  color: #0E0409; /* pour le texte en mode clair */
 }

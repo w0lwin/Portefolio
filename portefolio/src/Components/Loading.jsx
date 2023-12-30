@@ -8,6 +8,7 @@ const Loading = () => {
       height: '100vh', 
       justifyContent: 'center',
       alignItems: 'center',
+      
     }}>
       Teo Bacher Portefolio
     </div>
