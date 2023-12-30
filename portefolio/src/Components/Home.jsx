@@ -19,7 +19,7 @@ const Home = ({ darkMode }) => {
   return (
     <div className={`relative border transition-all duration-500 ${darkMode ? 'border' : 'dark-border'}`}>
       <Pixel3DAnimation isDarkTheme={darkMode}/>
-      <div className={`infos absolute top-0 left-0 right-0 text-center transition-all duration-500 ${darkMode ? 'dark-infos' : ''}`} style={{ zIndex: 2 }}>
+      <div className={`infos absolute top-0 left-0 right-0 text-center transition-all duration-500 ${darkMode ? 'dark-infos' : ''}`} style={{ zIndex: 2, margin: '4vh' }}>
         <h1 className={`text-3xl transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'} font-bold`}>Téo Bacher</h1>
         <h6 className={`transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'} text-sm`}>Développeur fullstack</h6>
         <div className={`infos mt-4 ${darkMode ? 'dark-infos' : ''}`}>

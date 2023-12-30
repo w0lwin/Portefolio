@@ -6,6 +6,8 @@
 
 body {
   overflow: hidden;
+  transition: background-color 1000ms;
+
 }
 
 .container {
@@ -15,7 +17,6 @@ body {
 .border {
   position: relative;
   margin: 3vh;
-  padding: 2vh;
   border: 1px solid white;
   height: 93vh;
   overflow: hidden;
@@ -24,7 +25,6 @@ body {
 .dark-border {
   position: relative;
   margin: 3vh;
-  padding: 2vh;
   border: 1px solid black;
   height: 93vh;
   overflow: hidden;
@@ -47,4 +47,67 @@ body {
 
 .info p {
   font-size: 1rem;
+}
+
+.checkbox-container {
+  position: fixed;
+  bottom: 2vh; /* Ou la valeur nécessaire pour aligner avec la bordure de Home */
+  left: 1vh; /* Ou la valeur nécessaire pour aligner avec la bordure de Home */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 2vh;
+
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px; /* Espacement entre les ensembles de labels et de fausses checkboxes */
+}
+
+.checkbox-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 10px; /* Taille de la police réduite pour le texte */
+  margin-bottom: 4px; /* Espacement entre le texte et la fausse checkbox */
+}
+
+.fake-checkbox {
+  width: 8px; /* Largeur de la fausse checkbox réduite */
+  height: 8px; /* Hauteur de la fausse checkbox réduite */
+  border: 1px solid currentColor; /* Bordure de la fausse checkbox qui s'adapte au thème */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fake-checkbox::after {
+  content: '';
+  font-size: 10px; /* Taille de la coche réduite */
+  opacity: 0; /* Coche transparente jusqu'à ce que la checkbox soit cochée */
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none; /* Cacher la vraie checkbox */
+}
+
+.checkbox-label input[type="checkbox"]:checked + .fake-checkbox::after {
+  opacity: 1; /* Rendre la coche visible */
+  content: '✔'; /* Ajouter une coche lorsque la checkbox est cochée */
+  color: currentColor; /* La couleur changera selon le thème */
+}
+
+
+
+
+body.dark-mode {
+  background-color: #000; /* ou la couleur que vous voulez pour le mode sombre */
+  color: #fff; /* pour le texte en mode sombre */
+}
+
+body.light-mode {
+  background-color: #fff; /* ou la couleur que vous voulez pour le mode clair */
+  color: #000; /* pour le texte en mode clair */
 }

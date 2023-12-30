@@ -3,22 +3,26 @@ import * as THREE from 'three';
 
 const Pixel3DAnimation = ({ isDarkTheme }) => {
   const mountRef = useRef(null);
-  const particles = new Array();
-  const particleMaterial = new THREE.PointsMaterial({ size: 1, color: isDarkTheme ? 0xffffff : 0x000000 });
 
   useEffect(() => {
     // Création de la scène et de la caméra
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const mount = mountRef.current;
 
-    // Création du renderer avec fond transparent
+    // Configuration du renderer pour qu'il s'adapte à la taille du conteneur
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    mount.appendChild(renderer.domElement);
 
-    const mountCurrent = mountRef.current;
-    mountCurrent.appendChild(renderer.domElement);
+    // Configuration de la caméra
+    const aspectRatio = mount.clientWidth / mount.clientHeight;
+    const camera = new THREE.PerspectiveCamera(75, aspectRatio, 0.1, 1000);
+    camera.position.z = 500;
 
-    // Ajout des particules
+    // Création des particules
+    const particles = [];
+    const particleMaterial = new THREE.PointsMaterial({ size: 1, color: isDarkTheme ? 0xffffff : 0x000000 });
+
     for (let x = -1000; x < 1000; x += 10) {
       for (let z = -1000; z < 1000; z += 10) {
         const y = (Math.sin(z * (Math.PI * 4 / 500)) + Math.sin((x + z) * (Math.PI * 2 / 500))) * 14 + 30;
@@ -30,8 +34,6 @@ const Pixel3DAnimation = ({ isDarkTheme }) => {
     const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particleSystem);
 
-    camera.position.z = 500;
-
     // Fonction de rendu
     const render = () => {
       requestAnimationFrame(render);
@@ -42,13 +44,25 @@ const Pixel3DAnimation = ({ isDarkTheme }) => {
 
     render();
 
+    // Gestion du redimensionnement
+    const handleResize = () => {
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     // Nettoyage
     return () => {
-      mountCurrent.removeChild(renderer.domElement);
+      mount.removeChild(renderer.domElement);
+      window.removeEventListener('resize', handleResize);
     };
   }, [isDarkTheme]); // Ajout de isDarkTheme comme dépendance
 
-  return <div ref={mountRef} style={{ width: '100%', height: '100%' }}/>;
+  return <div ref={mountRef} style={{ width: '100%', height: '100%' }} />;
 };
 
 export default Pixel3DAnimation;
