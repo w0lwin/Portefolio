@@ -1,40 +1,45 @@
-// Home.js
 import React, { useState, useEffect } from 'react';
 import Loading from './Loading';
 import Pixel3DAnimation from './Pixel3DAnimation';
+import ProjectList from './ProjectList';
 
 const Home = ({ darkMode }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const [activeButton, setActiveButton] = useState('home');
 
   useEffect(() => {
-    console.log('Début du délai de chargement');
-  
-    const timer = setTimeout(() => {
-      console.log('Fin du délai de chargement, mise à jour de isLoading');
-      setIsLoading(false);
-    }, 50);
-  
-    return () => {
-      clearTimeout(timer);
-      console.log('Nettoyage du délai de chargement');
-    };
+    const timer = setTimeout(() => setIsLoading(false), 3000); // Augmenter le délai pour une meilleure expérience utilisateur
+    return () => clearTimeout(timer);
   }, []);
-  
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  const handleNavigation = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
+  const textColorClass = darkMode ? 'text-white' : 'text-black';
+  const infosClass = darkMode ? 'dark-infos' : '';
+
+  const projectList = [
+    { name: "Starpeggio", year: "2023", category: "Commission", subcategory: "Special" },
+    { name: "BNN Online Store", year: "2023", category: "Commission", subcategory: "Corporate" },
+  ];
+  
+  if (isLoading) return <Loading />;
 
   return (
     <div className={`relative border transition-all duration-500 ${darkMode ? 'border' : 'dark-border'}`}>
       <Pixel3DAnimation isDarkTheme={darkMode}/>
-      <div className={`infos absolute top-0 left-0 right-0 text-center transition-all duration-500 ${darkMode ? 'dark-infos' : ''}`} style={{ zIndex: 2, margin: '4vh' }}>
-        <h1 className={`text-3xl transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'} font-bold`}>Téo Bacher</h1>
-        <h6 className={`transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'} text-sm`}>Développeur fullstack</h6>
-        <div className={`infos mt-4 ${darkMode ? 'dark-infos' : ''}`}>
-          <p className={`transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'}`}> Projets</p>
-          <p className={`transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'}`}> À propos</p>
-          <p className={`transition-all duration-500 ${darkMode ? 'text-white' : 'text-black'}`}> Contact</p>
+      {activeButton === 'projets' && <ProjectList projects={projectList} />}
+
+      <div className={`infos absolute top-0 left-0 right-0 text-center transition-all duration-500 ${infosClass}`} style={{ zIndex: 2, margin: '4vh' }}>
+        <h1 className={`text-3xl transition-all duration-500 ${textColorClass} font-bold`}>Téo Bacher</h1>
+        <h6 className={`transition-all duration-500 ${textColorClass} text-sm`}>Développeur fullstack</h6>
+        <div className="infos mt-4">
+          {['home', 'projets', 'about', 'contact'].map((button) => (
+            <button key={button} onClick={() => handleNavigation(button)}>
+              {button === activeButton ? <span>•</span> : button}
+            </button>
+          ))}
         </div>
       </div>
     </div>

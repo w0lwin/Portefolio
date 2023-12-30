@@ -7,6 +7,7 @@
 body {
   overflow: hidden;
   transition: background-color 200ms;
+  font-family: 'Roc Grotesk', sans-serif; 
 
 }
 
@@ -108,6 +109,34 @@ body.dark-mode {
 }
 
 body.light-mode {
-  background-color: #f4f1f8; /* ou la couleur que vous voulez pour le mode clair */
-  color: #0E0409; /* pour le texte en mode clair */
+  background-color: #f4f1f8; 
+  color: #0E0409; 
 }
+
+
+.project-list {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 250px; /* Adjust the width as necessary */
+  margin-top: 25vh;
+  background: hidden; /* Background color */
+  color: currentColor; /* Text color */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.project-item {
+  margin-bottom: 15px;
+}
+
+.project-title {
+  font-weight: bold;
+}
+
+.project-details {
+  font-size: 0.9em;
+}
+
+
+
