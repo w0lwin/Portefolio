@@ -116,13 +116,13 @@ body.light-mode {
 
 .project-list {
   position: absolute;
-  top: 0;
+  bottom: 25%; /* ajustez si nécessaire pour l'affichage à partir des trois quarts de la page */
   right: 0;
-  width: 250px; /* Adjust the width as necessary */
-  margin-top: 25vh;
-  background: hidden; /* Background color */
-  color: currentColor; /* Text color */
-  padding: 10px;
+  width: 30%; /* ajustez selon la largeur souhaitée */
+  max-height: 70%; /* ajustez selon l'espace disponible que vous voulez allouer */
+  overflow-y: auto; /* permet le défilement vertical si le contenu dépasse max-height */
+  background-color: hidden; /* ou toute autre couleur de fond appropriée */
+  padding: 1rem;
   box-sizing: border-box;
 }
 
@@ -138,5 +138,32 @@ body.light-mode {
   font-size: 0.9em;
 }
 
+.about-section {
+  position: absolute;
+  bottom: 25%; /* ajustez si nécessaire pour l'affichage à partir des trois quarts de la page */
+  right: 0;
+  width: 40%; /* ajustez selon la largeur souhaitée */
+  max-height: 50%; /* ajustez selon l'espace disponible que vous voulez allouer */
+  background-color: hidden; /* ou toute autre couleur de fond appropriée */
+  padding: 1rem;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  backdrop-filter: blur(2px);
+}
 
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  bottom: 25%; /* ajustez si nécessaire pour l'affichage à partir des trois quarts de la page */
+  right: 0;
+  width: 30%; /* ajustez selon la largeur souhaitée */
+  max-height: 70%; /* ajustez selon l'espace disponible que vous voulez allouer */
+  overflow-y: auto; /* permet le défilement vertical si le contenu dépasse max-height */
+  background-color: hidden; /* ou toute autre couleur de fond appropriée */
+  padding: 1rem;
+  box-sizing: border-box;
+}
 
